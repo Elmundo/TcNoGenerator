@@ -34,11 +34,8 @@
         dataList[i] = arc4random_uniform(10);
     }
     
-    int varA = dataList[1] + dataList[3] + dataList[5] + dataList[7] + dataList[9];
-    int varB = dataList[2] + dataList[4] + dataList[6] + dataList[8];
-    
-    int h10 = (varA - varB) % 10;
-    int h11 = (varA + varB + h10) % 10;
+    int h10 = (((dataList[1] + dataList[3] + dataList[5] + dataList[7] + dataList[9]) * 7) - dataList[2] + dataList[4] + dataList[6] + dataList[8]) % 10;
+    int h11 = (dataList[1] + dataList[3] + dataList[5] + dataList[7] + dataList[9] + dataList[2] + dataList[4] + dataList[6] + dataList[8] + h10) % 10;
     
     int64_t tcNo = 0;
     for (int j=1; j <= 9; ++j) {
